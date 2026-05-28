@@ -16,39 +16,51 @@ my_folder/
     ⤷ ...
 ```
 
-Main usage:
+### Example usage:
 
 ```
 import image_viewer
 
-my_image_viewer = image_viewer.ImageViewer("/image_dir/", "/output_path/")
+my_image_viewer = image_viewer.ImageViewer()
 
-my_image_viewer.render_html()
+my_image_viewer.add_images_from_directory("./my_images/")
+
+my_image_viewer.render_html("./output_dir/)
 ```
 
-_The most convenient way of viewing HTMLs is right-clicking the file in VS Code as pressing "Open in Integrated Browser"_
+_The most convenient way of viewing HTMLs is right-clicking the file in VS Code and pressing "Open in Integrated Browser."_
 
-Optionally set new paths:
+_HTMLs can be saved as PDFs using the 'Print' feature of web browsers._
+
+### Add images:
 
 ```
-my_image_viewer.image_dir = "./subtracted_continuous_features"
+my_image_viewer.add_images_from_directory("./my_images/")
 
-my_image_viewer.output_path = "./outputs/my_output.html"
+my_image_viewer.add_image("./my_images/image1.png")
 ```
 
-View image filenames:
+### Remove images:
+
+```
+my_image_viewer.remove_image("./my_images/image1.png")
+
+my_image_viewer.remove_all_images()
+```
+
+### Render HTML:
+
+```
+my_image_viewer.render_html("./output_dir/")
+```
+
+### View image filenames:
 
 ```
 print(my_image_viewer.images)
 ```
 
-Remove images:
-
-```
-my_image_viewer.remove_image("image_filename")
-```
-
-Sort alphabetically:
+### Sort alphabetically:
 
 _Note: this treats '1' and '10' as before '2'. To avoid this, number your files '001', '002',... '010'_
 
@@ -56,7 +68,7 @@ _Note: this treats '1' and '10' as before '2'. To avoid this, number your files 
 my_image_viewer.sort_images(descending = False)
 ```
 
-Sort according to RegEx patterns:
+### Sort according to RegEx patterns:
 
 ```
 my_image_viewer.sort_images_by_regex(["pattern1", "pattern2",...], descending = False, remove_unmatched_images = False)

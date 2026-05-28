@@ -211,6 +211,7 @@
 
     <script>
       const imageFiles = [IMAGE_FILES];
+      const imageAbsPaths = [ABS_PATHS];
 
       const gallery = document.getElementById("gallery");
       const colInput = document.getElementById("col-input");
@@ -227,7 +228,7 @@
           const card = document.createElement("div");
           card.className = "image-card";
           card.innerHTML = `
-                    <img src="IMAGE_DIR/${filename}">
+                    <img src="file:///${imageAbsPaths[index]}">
                     <div class="filename-label" title="${filename}">${filename}</div>
                     <div class="hide-btn" title="Hide Image">✕</div>
                 `;
